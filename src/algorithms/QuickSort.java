@@ -48,7 +48,9 @@ public class QuickSort {
                 
             }
             while(array[y] > pivot);
-                
+            
+            time++;
+            
             if(x < y){
             
                 int temp = array[x];
@@ -58,8 +60,6 @@ public class QuickSort {
             else{
                 return y;            
             }
-            
-            time++;
                 
         }
         

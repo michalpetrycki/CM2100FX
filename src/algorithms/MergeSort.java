@@ -35,19 +35,16 @@ public class MergeSort {
         int[] a2 = new int[n2];
                 
         for(int i = 0; i < n1; i++){
-            
             a1[i] = array[left + i];
-            space++;
-            
         }
         
         for(int i = 0; i < n2; i++){        
-            
             a2[i] = array[middle + 1 + i];
-            space++;
-            
         }
-            
+        
+        space += a1.length;
+        space += a2.length;
+        
         int i = 0;
         int j = 0;
         int k = left;

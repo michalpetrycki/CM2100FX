@@ -44,19 +44,16 @@ public class CWAlgorithms {
                 m.sort(0, i - 1);
                 time += m.getTime();
                 space += m.getSpace();
-                System.out.println(time);
                 merge_times.add((double) time);
                 merge_spaces.add((double) space);
                 
             }
             merge_time_map.put(i, calculateMean(merge_times));
-            System.out.println(i + ": " + calculateMean(merge_times));
             merge_space_map.put(i, calculateMean(merge_spaces));
             
             for(QuickSort q: qs){
 
                 int time = 0;
-                int space = 0;
                 
                 q = new QuickSort(i);
                 q.sort(0, i - 1);
