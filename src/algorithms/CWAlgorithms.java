@@ -5,8 +5,13 @@
  */
 package algorithms;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,7 +31,7 @@ public class CWAlgorithms {
         Map<Integer, Double> quick_map = new HashMap<>();
         ArrayList<Double> quick_times;
         
-        for(int i = 10; i < 1000; i += 10){
+        for(int i = 0; i < 1000; i += 100){
         
             MergeSort[] ms = new MergeSort[100];
             QuickSort[] qs = new QuickSort[100];
@@ -70,6 +75,10 @@ public class CWAlgorithms {
         maps.add(merge_space_map);
         maps.add(quick_map);
         
+        writeToFile(merge_time_map, "merge_times.csv");
+        writeToFile(merge_space_map, "merge_spaces.csv");
+        writeToFile(quick_map, "quick_map.csv");
+        
         return maps;
         
     }
@@ -82,6 +91,34 @@ public class CWAlgorithms {
             mean += d;
         
         return mean / 100.0;
+    
+    }
+    
+    private void writeToFile(Map<Integer, Double> map, String fileName){
+    
+        File file = new File(fileName);
+        List<Integer> keys = new ArrayList<>(map.keySet());
+        Collections.sort(keys);
+        
+        try{
+        
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write("Number of items,Number of operations,Number of arrays");
+            writer.newLine();
+            for(Integer i: keys){
+            
+                writer.write(i + "," + map.get(i) + ",100");
+                writer.newLine();
+            
+            }
+            
+            writer.flush();
+            writer.close();
+        
+        }
+        catch(Exception ex){
+            System.out.println("Exception occured: " + ex.toString());
+        }
     
     }
     
